@@ -1,7 +1,8 @@
 import { ValueCard } from './Components/ValueCard';
 import { DotPlot } from './Components/DotPlot';
+import { DonutChart } from './Components/DonutChart';
 
-function TobaccoViz() {
+function NCDViz() {
   return (
     <div
       className='flex-div flex-wrap flex-hor-align-center'
@@ -17,39 +18,13 @@ function TobaccoViz() {
           gap: 'var(--spacing-09)',
         }}
       >
-        <ValueCard
-          title='people in the world use tobacco'
-          number='1.3 Billion'
-          year={2022}
-        />
-        <ValueCard
-          title='deaths are attributed to tobacco each year'
-          number='8 Million'
-          year={2022}
-        />
-        <ValueCard
-          title='countries have ratified the WHO FCTC '
-          number='182'
-          year={2022}
-          source='WHO'
-        />
-      </div>
-      <div
-        className='flex-div'
-        style={{
-          flexDirection: 'column',
-          width: 'calc(33.33% - 2rem)',
-          flexGrow: 1,
-          flexBasis: '20rem',
-          gap: 'var(--spacing-09)',
-        }}
-      >
         <DotPlot
-          graphTitle='People used tobacco'
-          value={22.3}
+          graphTitle='Global deaths are attributed to non-communicable diseases (NCDs)'
           size={200}
-          year={2020}
-          source='WHO'
+          value={74}
+          year={2022}
+          note='Total deaths: 41 million'
+          source='WHO NCD Key Facts'
           dotColor='var(--dark-red)'
         />
       </div>
@@ -63,17 +38,41 @@ function TobaccoViz() {
           gap: 'var(--spacing-09)',
         }}
       >
-        <DotPlot
-          graphTitle='Tobacco users live in LMICs'
-          value={80}
-          size={200}
-          year={2022}
-          source='WHO'
-          dotColor='var(--blue-600)'
+        <DonutChart
+          graphTitle='Proportion of NCD deaths in LMICs'
+          size={340}
+          value={[77, 23]}
+          colors={['var(--dark-red)', 'var(--gray-400)']}
+          note='Total number: 31.6 Million'
+          year={2019}
+          source='WHO NCD Key Facts'
+        />
+      </div>
+      <div
+        className='flex-div'
+        style={{
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          width: 'calc(33.33% - 2rem)',
+          flexGrow: 1,
+          flexBasis: '20rem',
+          gap: 'var(--spacing-09)',
+        }}
+      >
+        <ValueCard
+          title='Premature NCD deaths before age 70'
+          number='17 Million'
+          year={2019}
+        />
+        <ValueCard
+          title='of these premature deaths occur in LMICs'
+          number='86%'
+          year={2019}
+          source='WHO NCD Key Facts'
         />
       </div>
     </div>
   );
 }
 
-export default TobaccoViz;
+export default NCDViz;
