@@ -1,16 +1,25 @@
 import { format } from 'd3-format';
+import styled from 'styled-components';
 
 interface Props {
   value: number;
   size: number;
   graphTitle: string;
   dotColor?: string;
+  note?: string;
+  source?: string;
   year: number;
   labelFormat?: string;
 }
 
+const SourceEl = styled.div`
+  font-size: 1rem;
+  color: var(--gray-500);
+`;
+
 export function DotPlot(props: Props) {
-  const { value, size, graphTitle, dotColor, year, labelFormat } = props;
+  const { value, size, graphTitle, dotColor, year, note, source, labelFormat } =
+    props;
   const margin = {
     top: 0,
     bottom: 0,
@@ -29,16 +38,19 @@ export function DotPlot(props: Props) {
       }}
     >
       <p className='undp-typography margin-bottom-00'>{graphTitle}</p>
-      <h2 className='undp-typography bold margin-bottom-00'>
-        {Math.abs(value) < 1
-          ? value
-          : format(labelFormat || '.3s')(value).replace('G', 'B')}{' '}
-        out of 100
-        <span style={{ color: 'var(--gray-500)', fontSize: '1.5rem' }}>
-          {' '}
-          ({year})
-        </span>
-      </h2>
+      <div>
+        <h2 className='undp-typography bold margin-bottom-00'>
+          {Math.abs(value) < 1
+            ? value
+            : format(labelFormat || '.2s')(value).replace('G', 'B')}{' '}
+          out of 100
+          <span style={{ color: 'var(--gray-500)', fontSize: '1.5rem' }}>
+            {' '}
+            ({year})
+          </span>
+        </h2>
+        {note ? <p className='undp-typography bold'>{note}</p> : null}
+      </div>
       <svg
         style={{ maxWidth: '15rem', margin: '0' }}
         width='100%'
@@ -66,6 +78,7 @@ export function DotPlot(props: Props) {
           ))}
         </g>
       </svg>
+      <SourceEl className='margin-top-05'>Source: {source}</SourceEl>
     </div>
   );
 }

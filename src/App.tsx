@@ -1,4 +1,5 @@
 import TobaccoViz from './Tobacco';
+import NCDViz from './NCD';
 
 interface Props {
   focusArea: string;
@@ -15,7 +16,11 @@ function App(props: Props) {
         className='flex-div flex-wrap flex-hor-align-center gap-00'
         style={{ maxWidth: '1392px', margin: 'auto' }}
       >
-        {focusArea === 'Tobacco' ? <TobaccoViz /> : null}
+        {focusArea === 'Tobacco' ? (
+          <TobaccoViz />
+        ) : focusArea === 'NCD' ? (
+          <NCDViz />
+        ) : null}
       </div>
     </div>
   );
