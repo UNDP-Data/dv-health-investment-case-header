@@ -11,7 +11,7 @@ interface Props {
 const StatEl = styled.h3`
   width: 100%;
   font-size: 4.375rem !important;
-  line-height: 0.75 !important;
+  line-height: 0.9 !important;
   text-shadow: none !important;
   -webkit-text-stroke: 2px var(--black) !important;
   color: var(--gray-200) !important;
@@ -46,6 +46,7 @@ export function ValueCard(props: Props) {
           alignItems: 'flex-start',
           flexDirection: 'column',
           flexWrap: 'wrap',
+          lineHeight: '1.3',
         }}
       >
         <StatEl className='undp-typography bold margin-bottom-03'>
