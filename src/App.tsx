@@ -1,5 +1,6 @@
 import TobaccoViz from './Tobacco';
 import NCDViz from './NCD';
+import MentalHealthViz from './MentalHealth';
 
 interface Props {
   focusArea: string;
@@ -20,6 +21,8 @@ function App(props: Props) {
           <TobaccoViz />
         ) : focusArea === 'NCD' ? (
           <NCDViz />
+        ) : focusArea === 'MentalHealth' ? (
+          <MentalHealthViz />
         ) : null}
       </div>
     </div>
