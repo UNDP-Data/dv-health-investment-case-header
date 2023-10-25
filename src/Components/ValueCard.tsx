@@ -5,6 +5,7 @@ interface Props {
   title: string;
   year?: number;
   source?: string;
+  note?: string;
 }
 
 const StatEl = styled.h3`
@@ -36,7 +37,7 @@ const YearEl = styled.span`
 `;
 
 export function ValueCard(props: Props) {
-  const { number, title, year, source } = props;
+  const { number, title, year, source, note } = props;
   return (
     <div style={{ flexGrow: 1, display: 'flex' }}>
       <div
@@ -51,6 +52,7 @@ export function ValueCard(props: Props) {
           {number}
           {year ? <YearEl> ({year})</YearEl> : null}
         </StatEl>
+        {note ? <p className='undp-typography bold'>{note}</p> : null}
         <p className='undp-typography large-font margin-bottom-00'>{title}</p>
         {source ? (
           <SourceEl className='margin-top-05'>Source: {source}</SourceEl>
